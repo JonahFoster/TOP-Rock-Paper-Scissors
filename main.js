@@ -37,6 +37,24 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let playerScore = 0, computerScore = 0;
+
+    for (i = 0; i < 5; i++) {
+        let result = playRound(getPlayerChoice(), getComputerChoice());
+        if (result.includes("Player Wins")) {
+            playerScore++
+            console.log("You win the round.")
+        }
+        else if (result.includes("tie")){
+            console.log("It is a tie.")
+        }
+        else {
+            computerScore++
+            console.log("You lost the round.")
+        }
+    }
+    console.log("Final: Player - " + playerScore + " Computer - " + computerScore);
+}
+
+game();
